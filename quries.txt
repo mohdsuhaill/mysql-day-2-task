@@ -1,0 +1,33 @@
+create table mentor(
+ment_id int primary key,
+ment_name varchar(25) 
+);
+
+create table  batch(
+batch_id int primary key,
+ment_id int,
+lang varchar(25),
+foreign key(ment_id) references mentor(ment_id)
+);
+
+create table  student(
+std_id int primary key ,
+std_name varchar(25),
+batch_id int ,
+foreign key(batch_id) references batch(batch_id)
+);
+
+create table mail(
+eml_id int primary key ,
+std_id int ,
+foreign key (std_id) references student (std_id)
+);
+
+create table guvidb(
+ment_id int,
+batch_id int,
+std_id int,
+foreign key(ment_id) references mentor(ment_id),
+foreign key(batch_id) references batch(batch_id),
+foreign key (std_id) references student(std_id)
+);
